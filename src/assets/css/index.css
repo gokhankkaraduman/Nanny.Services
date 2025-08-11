@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('./assets/fonts/HelveticaNeue-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('./assets/fonts/HelveticaNeue-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('./assets/fonts/HelveticaNeue-Roman.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --font-family: 'HelveticaNeue', Arial, sans-serif;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+    --bg-color:#0957C3;
+    --color-text-light:#fbfbfb;
+    --color-text-dark:#11101c;
+    --color-transparent:rgba(17, 16, 28, 0.5);
+    --color-text-gray:#8a8a89;
+    }
+
+body{
+    font-family: var(--font-family);
+    background-color: #0957C3;
+}
