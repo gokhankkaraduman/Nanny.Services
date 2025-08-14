@@ -6,9 +6,9 @@ export default function UserNav() {
     return (
         <nav className={style.nav}>
             <ul className={style.list}>
-                <NavLink to="/" className={style.listItem}>Home</NavLink>
-                <NavLink to="/nannies" className={style.listItem}>Nannies</NavLink>
-                <NavLink to="/favorites" className={style.listItem}>Favorites</NavLink>
+                <NavLink to="/" className={({ isActive }) => isActive ? `${style.listItem} ${style.active}` : style.listItem}>Home</NavLink>
+                <NavLink to="/nannies" className={({ isActive }) => isActive ? `${style.listItem} ${style.active}` : style.listItem}>Nannies</NavLink>
+                <NavLink to="/favorites" className={({ isActive }) => isActive ? `${style.listItem} ${style.active}` : style.listItem}>Favorites</NavLink>
             </ul>
             <div className={style.userInfo}>
                 <ul className={style.userList}>

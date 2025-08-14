@@ -29,9 +29,11 @@
     --color-text-dark:#11101c;
     --color-transparent:rgba(17, 16, 28, 0.5);
     --color-text-gray:#8a8a89;
-    }
-
+--btn-hover-bg: linear-gradient(135deg, #0957C3, #74b9ff);
+--btn-hover-text: #ffffff;
+--link-hover-text: #ffffff;
+--link-hover-bg: linear-gradient(135deg, #0957C3, #74b9ff);
+}
 body{
     font-family: var(--font-family);
-    background-color: #0957C3;
 }

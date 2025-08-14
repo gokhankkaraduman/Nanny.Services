@@ -10,12 +10,112 @@
     align-items: center;
 
 }
-.listItem{
-    color:var(--color-text-light);
+.listItem {
+    position: relative;
+    color: var(--color-text-light);
     font-weight: var(--fw-regular);
-    font-size:16px;
+    font-size: 16px;
     line-height: 125%;
     letter-spacing: -0.01em;
+    
+    width: 120px;
+    min-height: 45px;
+    padding: 12px 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 400ms ease;
+    z-index: 1;
+}
+
+.listItem::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: var(--link-hover-bg);
+    border-radius: 30px;
+    transition: width 400ms ease-in-out;
+    z-index: -1;
+}
+
+.listItem::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    background: var(--link-hover-bg);
+    border-radius: 50%;
+    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0;
+}
+
+/* Active durumu - hover ile aynı efekt */
+.active::before,
+.listItem:hover::before {
+    width: 100%;
+}
+
+.active::after,
+.listItem:hover::after {
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+}
+
+.active,
+.listItem:hover {
+    color: var(--link-hover-text);
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+/* Active olan damla animasyonu kalmasın, direkt göster */
+.active::after {
+    animation: none; /* Active'de animasyon yok */
+}
+
+/* Sadece hover'da animasyon */
+.listItem:hover:not(.active)::after {
+    animation: dropEffect 600ms ease-out;
+}
+
+.listItem:not(:hover) {
+    transition: all 300ms ease;
+}
+
+ul:hover .listItem:not(:hover):not(.active) {
+    transform: scale(0.85);
+    opacity: 0.6;
+    filter: blur(1px);
+}
+
+@keyframes dropEffect {
+    0% {
+        bottom: 50%;
+        width: 4px;
+        height: 4px;
+        opacity: 0.8;
+    }
+    50% {
+        bottom: -5px;
+        width: 8px;
+        height: 10px;
+        opacity: 1;
+    }
+    100% {
+        bottom: -15px;
+        width: 12px;
+        height: 12px;
+        opacity: 1;
+    }
 }
 .userList{
     display:flex;
@@ -32,6 +132,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .userName{
     display:flex;
     align-items: center;
@@ -48,6 +149,7 @@
     border-radius:10px;
 }
 .logoutBtn{
+    position: relative;
     font-size:16px;
     border: 1px solid rgba(251, 251, 251, 0.4);
     border-radius: 30px;
@@ -56,4 +158,23 @@
     height: 48px;
     color: var(--color-text-light);
     background-color: transparent;
+    transition: all 200ms ease-in-out;
+}
+.logoutBtn::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0; 
+    width: 0; 
+    height: 100%;
+    background: var(--btn-hover-bg);
+    border-radius: 30px; 
+    transition: width 300ms ease-in-out;
+    z-index: -1; 
+}
+.logoutBtn:hover::before {
+    width: 100%;
+}
+.logoutBtn:hover{
+    color: var(--btn-hover-text);
 }

@@ -1,26 +1,165 @@
-.header{
-    padding:20px 96px;
+.header {
+    padding: 20px 96px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: transparent;
-    border-bottom: 1px solid rgba(251, 251, 251, 0.4);;
-}
-.logo{
-    font-size: 24px;
-    line-height: 117%;
-    letter-spacing: -0.02em;
-    font-weight: var(--fw-medium);
-    color:var(--color-text-light);
-    margin-right:215px;
+    border-bottom: 1px solid rgba(251, 251, 251, 0.4);
 }
 
 .logoContainer {
     flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; /* Ortalamayı garantiye almak için */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+}
+
+.logoIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.iconContainer {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #5a4dd0, #2e2a7e);
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(46, 42, 126, 0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: all 400ms ease;
+    overflow: hidden;
+}
+
+.mainIcon {
+    font-size: 26px;
+    color: #f2f2ff;
+    transition: all 300ms ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+    z-index:2;
+}
+
+.iconGlow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 50%);
+    opacity: 0;
+    transition: all 400ms ease;
+    pointer-events: none;
+}
+
+.iconRing {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(90,77,208,0.4), rgba(46,42,126,0.4));
+    background-clip: padding-box;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 400ms ease;
+}
+
+/* TEXT */
+.logoText {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ortalı */
+    justify-content: center; /* Ortalı dikey */
+    transition: all 400ms ease;
+}
+
+.brandName {
+    display: flex;
+    align-items: baseline;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transition: all 400ms ease;
+}
+
+.services {
+    color: #b3aaff;
+    font-weight: 400;
+    margin-left: 2px;
+    transition: all 400ms ease;
+}
+
+.tagline {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #a0a0a0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0; /* Başta gizli */
+    transform: translateY(6px); /* Hover için başlangıç pozisyonu */
+    transition: all 400ms ease;
+    margin-top: 4px;
+}
+
+/* HOVER EFFECTS */
+.logo:hover {
+    transform: translateY(-2px);
+}
+
+.logo:hover .iconContainer {
+    transform: scale(1.1) rotate(2deg);
+    background: linear-gradient(135deg, #5a4dd0, #2e2a7e, #9c7fff);
+    box-shadow: 0 12px 48px rgba(46,42,126,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.logo:hover .mainIcon {
+    transform: scale(1.2);
+}
+
+.logo:hover .iconGlow {
+    opacity: 1;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.logo:hover .iconRing {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.logo:hover .logoText {
+    transform: translateY(-12px); /* Hem brandName hem tagline birlikte yukarı kayıyor */
+}
+
+.logo:hover .tagline {
+    opacity: 1; /* Görünür oluyor */
+}
+
+/* Animations */
+@keyframes pulse {
+    0%,100%{opacity:0.6; transform:scale(1);}
+    50%{opacity:1; transform:scale(1.1);}
 }
 
 .navContainer {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+    flex:1;
+    display:flex;
+    justify-content:center;
 }
+

@@ -1,0 +1,236 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    margin-left: 205px;
+}
+
+.list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 92px;
+}
+
+.left {
+    display: flex;
+    gap: 40px;
+}
+
+.right {
+    display: flex;
+    gap: 40px;
+    position: relative;
+}
+
+/* SOL TARAF STİLLERİ - LEFT */
+.left > .listItem {
+    position: relative;
+    color: var(--color-text-light);
+    font-weight: var(--fw-regular);
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    width: 100px;
+    min-height: 45px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 8px;
+    transition: all 400ms ease;
+    z-index: 1;
+    text-decoration: none;
+}
+
+.left > .listItem::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: var(--link-hover-bg);
+    border-radius: 30px;
+    transition: width 400ms ease-in-out;
+    z-index: -1;
+}
+
+.left > .listItem::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    background: var(--link-hover-bg);
+    border-radius: 50%;
+    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0;
+}
+
+/* Sol taraf active/hover durumları */
+.left > .active::before,
+.left > .listItem:hover::before {
+    width: 100%;
+}
+
+.left > .active::after,
+.left > .listItem:hover::after {
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+}
+
+.left > .active,
+.left > .listItem:hover {
+    color: var(--link-hover-text);
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+/* Active olan damla animasyonu kalmasın, direkt göster */
+.left > .active::after {
+    animation: none;
+}
+
+/* Sadece hover'da animasyon */
+.left > .listItem:hover:not(.active)::after {
+    animation: dropEffect 600ms ease-out;
+}
+
+.left > .listItem:not(:hover) {
+    transition: all 300ms ease;
+}
+
+.left:hover .listItem:not(:hover):not(.active) {
+    transform: scale(0.85);
+    opacity: 0.6;
+    filter: blur(1px);
+}
+
+@keyframes dropEffect {
+    0% {
+        bottom: 50%;
+        width: 4px;
+        height: 4px;
+        opacity: 0.8;
+    }
+    50% {
+        bottom: -5px;
+        width: 8px;
+        height: 10px;
+        opacity: 1;
+    }
+    100% {
+        bottom: -15px;
+        width: 12px;
+        height: 12px;
+        opacity: 1;
+    }
+}
+
+/* SAĞ TARAF STİLLERİ - RIGHT */
+.right > .listItem {
+    position: relative;
+    font-size: 16px;
+    border: 1px solid rgba(251, 251, 251, 0.4);
+    border-radius: 30px;
+    padding: 0;
+    width: 134px;
+    height: 48px;
+    color: var(--color-text-light);
+    background-color: transparent;
+    transition: all 300ms ease-in-out;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Icon stilleri */
+.icon {
+    font-size: 18px;
+    transition: all 300ms ease;
+}
+
+/* Sol taraf iconları */
+.left .icon {
+    font-size: 20px;
+}
+
+/* Sağ taraf iconları */
+.right .icon {
+    font-size: 16px;
+}
+
+/* Hareket eden background için ana container */
+.right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0; /* Varsayılan olarak sağdaki butonda (register) */
+    width: 134px;
+    height: 48px;
+    background: var(--btn-hover-bg);
+    border-radius: 30px;
+    transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Login hover/active olduğunda background sola kayar */
+.right > .listItem:first-child:hover ~ *,
+.right > .listItem:first-child.active ~ * {
+    /* Bu boş kalabilir, asıl işlem aşağıda */
+}
+
+.right > .listItem:first-child:hover,
+.right > .listItem:first-child.active {
+    color: var(--btn-hover-text);
+}
+
+.right > .listItem:last-child:hover,
+.right > .listItem:last-child.active {
+    color: var(--btn-hover-text);
+}
+
+/* Background pozisyon kontrolü */
+.right:has(.listItem:first-child:hover)::before,
+.right:has(.listItem:first-child.active)::before {
+    right: calc(100% - 134px); /* Sola kayar (login) */
+}
+
+.right:has(.listItem:last-child:hover)::before,
+.right:has(.listItem:last-child.active)::before {
+    right: 0; /* Sağda kalır (register) */
+}
+
+/* Eğer :has desteklenmiyorsa JavaScript ile de yapabiliriz */
+/* Alternatif: class-based yaklaşım */
+.right.login-active::before {
+    right: calc(100% - 134px);
+}
+
+.right.register-active::before {
+    right: 0;
+}
+
+/* Hover efektleri */
+.right > .listItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Active buton stili */
+.right > .listItem.active {
+    color: var(--btn-hover-text);
+}
