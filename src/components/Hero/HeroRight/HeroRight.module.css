@@ -1,15 +1,48 @@
 .heroRight{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-radius: 30px;
-    width: 1376px;
-    height: 736px;
-    background: var(--primary-color);
+    position: relative;
+    width: 699px ;
+    height:748px;
 }
-.babyImage{
-    background-image:url(../../../assets/img/hero-bg.png);
-    border-radius: 0 30px 30px 0;
-    width: 699px;
-    height: 736px;
+.textContent {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    z-index: 1;
+    display: flex;
+    gap: 16px;
+    border-radius: 20px;
+    width: 284px;
+    height: 118px;
+    align-items: center;
+    background-color: var(--color-text-light);
+    padding: 32px;
+}
+
+.icon{
+    background: var(--bg-color);
+    color:var(--color-text-light);
+    border-radius: 13px;
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.textContainer{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+}
+.title{
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+}
+.subtitle{
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--color-text-dark)
 }
