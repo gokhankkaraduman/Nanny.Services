@@ -1,0 +1,15 @@
+.heroRight{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 30px;
+    width: 1376px;
+    height: 736px;
+    background: var(--primary-color);
+}
+.babyImage{
+    background-image:url(../../../assets/img/hero-bg.png);
+    border-radius: 0 30px 30px 0;
+    width: 699px;
+    height: 736px;
+}
