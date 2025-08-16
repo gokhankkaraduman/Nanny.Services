@@ -1,0 +1,76 @@
+.themeSwitcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 8px 12px;
+  background: var(--nav-bg-glass);
+  border: 1px solid var(--nav-border-glass);
+  border-radius: 12px;
+  color: var(--color-text-light);
+  font-family: var(--font-family);
+  font-weight: var(--fw-medium);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  width: 150px;
+  height: 86px;
+}
+
+.themeSwitcher:hover {
+  background: var(--link-hover-bg);
+  border-color: var(--color-brand-aqua);
+  transform: translateY(-2px);
+  box-shadow: var(--nav-shadow-premium);
+}
+
+.themeSwitcher:active {
+  transform: translateY(0);
+}
+
+.themeSwitcher::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.themeSwitcher:hover::before {
+  left: 100%;
+}
+
+.icon {
+  font-size: 25px;
+  transition: transform 0.3s ease;
+}
+
+.themeSwitcher:hover .icon {
+  transform: rotate(15deg);
+}
+
+.themeIndicator {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.themeSwitcher:hover .themeIndicator {
+  transform: scale(1.2);
+}
+
+/* Tema değişim animasyonu */
+.themeSwitcher:active .themeIndicator {
+  animation: themePulse 0.3s ease;
+}
+
+@keyframes themePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1.2); }
+}
