@@ -29,11 +29,106 @@
     --color-text-dark:#11101c;
     --color-transparent:rgba(17, 16, 28, 0.5);
     --color-text-gray:#8a8a89;
---btn-hover-bg: linear-gradient(135deg, #0957C3, #74b9ff);
---btn-hover-text: #ffffff;
---link-hover-text: #ffffff;
---link-hover-bg: linear-gradient(135deg, #0957C3, #74b9ff);
+  --color-brand-blue: #0A69D2;
+  --color-brand-aqua: #00E4FF;
+  --color-accent-light: #B4E6FF;
+
+  --link-hover-bg: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-aqua));
+  --link-hover-text: #ffffff;
+  
+  --nav-bg-glass: rgba(255, 255, 255, 0.1);
+  --nav-border-glass: rgba(255, 255, 255, 0.2);
+  --nav-shadow-premium: 0 8px 40px rgba(0, 0, 0, 0.3);
+
+  --active-drop-color: var(--color-accent-light);
+  --drop-shadow: 0 0 15px var(--color-accent-light);
+  --active-link-shadow: inset 0 0 12px rgba(255, 255, 255, 0.4), 0 0 25px rgba(0, 228, 255, 0.7);
+  
+  /* Buton hover renkleri */
+  --btn-hover-gradient: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-aqua));
+  --btn-hover-text: #ffffff;
+  
+  /* Logo renkleri */
+  --logo-bg-gradient: linear-gradient(135deg, var(--color-brand-aqua), var(--color-brand-blue), var(--color-accent-light));
+  --logo-hover-gradient: linear-gradient(135deg, var(--color-accent-light), var(--color-brand-aqua), var(--color-brand-blue));
+  --logo-icon-color: #e9ffff;
+  --logo-text-color: #ffffff;
+  --logo-services-color: #80f0ff;
+  --logo-tagline-color: #b3f8ff;
+  --logo-text-shadow: 0 2px 6px rgba(0,0,0,0.3), 0 0 8px rgba(0,198,255,0.4);
+  --logo-hover-text-shadow: 0 2px 8px rgba(0,0,0,0.4), 0 0 12px rgba(0,245,212,0.8);
+  --logo-box-shadow: 0 8px 28px rgba(0, 198, 255, 0.5);
+  --logo-hover-box-shadow: 0 12px 48px rgba(0, 198, 255, 0.6);
+  --logo-ring-gradient: linear-gradient(135deg, rgba(0,198,255,0.4), rgba(0,245,212,0.4));
 }
+
+
+/* Kırmızı Tema için CSS Sınıfı */
+.theme-red {
+    --bg-color: #F03F3B;
+    --color-brand-blue: #D62F2D; 
+    --color-brand-aqua: #FF6662;
+    --color-accent-light: #FFB4B4;
+
+    --link-hover-bg: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-aqua));
+    --active-drop-color: var(--color-accent-light);
+    --drop-shadow: 0 0 15px var(--color-accent-light);
+    --active-link-shadow: inset 0 0 12px rgba(255, 255, 255, 0.4), 0 0 25px rgba(255, 102, 98, 0.7);
+    
+    /* Buton hover renkleri - Kırmızı tema */
+    --btn-hover-gradient: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-aqua));
+    --btn-hover-text: #ffffff;
+    
+    /* Logo renkleri - Kırmızı tema */
+    --logo-bg-gradient: linear-gradient(135deg, #FF6662, #D62F2D, #FFB4B4);
+    --logo-hover-gradient: linear-gradient(135deg, #FFB4B4, #FF6662, #D62F2D);
+    --logo-icon-color: #ffffff;
+    --logo-text-color: #ffffff;
+    --logo-services-color: #ffcccc;
+    --logo-tagline-color: #ffb3b3;
+    --logo-text-shadow: 0 2px 6px rgba(0,0,0,0.3), 0 0 8px rgba(255,102,98,0.4);
+    --logo-hover-text-shadow: 0 2px 8px rgba(0,0,0,0.4), 0 0 12px rgba(255,180,180,0.8);
+    --logo-box-shadow: 0 8px 28px rgba(255, 102, 98, 0.5);
+    --logo-hover-box-shadow: 0 12px 48px rgba(255, 102, 98, 0.6);
+    --logo-ring-gradient: linear-gradient(135deg, rgba(255,102,98,0.4), rgba(255,180,180,0.4));
+}
+
+/* Yeşil Tema için CSS Sınıfı */
+.theme-green {
+    --bg-color: #103931;
+    --color-brand-blue: #1C5C4B; 
+    --color-brand-aqua: #288F6D; 
+    --color-accent-light: #C4FFD5;
+
+    --link-hover-bg: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-aqua));
+    --active-drop-color: var(--color-accent-light);
+    --drop-shadow: 0 0 15px var(--color-accent-light);
+    --active-link-shadow: inset 0 0 12px rgba(255, 255, 255, 0.4), 0 0 25px rgba(40, 143, 109, 0.7);
+    
+    /* Buton hover renkleri - Yeşil tema */
+    --btn-hover-gradient: linear-gradient(135deg, var(--color-brand-blue), var(--color-brand-aqua));
+    --btn-hover-text: #ffffff;
+    
+    /* Logo renkleri - Yeşil tema */
+    --logo-bg-gradient: linear-gradient(135deg, #288F6D, #1C5C4B, #C4FFD5);
+    --logo-hover-gradient: linear-gradient(135deg, #C4FFD5, #288F6D, #1C5C4B);
+    --logo-icon-color: #ffffff;
+    --logo-text-color: #ffffff;
+    --logo-services-color: #c4ffd5;
+    --logo-tagline-color: #b4ffc4;
+    --logo-text-shadow: 0 2px 6px rgba(0,0,0,0.3), 0 0 8px rgba(40,143,109,0.4);
+    --logo-hover-text-shadow: 0 2px 8px rgba(0,0,0,0.4), 0 0 12px rgba(196,255,213,0.8);
+    --logo-box-shadow: 0 8px 28px rgba(40, 143, 109, 0.5);
+    --logo-hover-box-shadow: 0 12px 48px rgba(40, 143, 109, 0.6);
+    --logo-ring-gradient: linear-gradient(135deg, rgba(40,143,109,0.4), rgba(196,255,213,0.4));
+}
+
 body{
     font-family: var(--font-family);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Tema değişim animasyonları */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
