@@ -1,0 +1,289 @@
+/* Genel Kapsayıcı: Orijinal yapıyı koruyoruz */
+.heroLeft {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    padding-left: 6%;
+}
+
+.textContent {
+    width: 517px;
+    min-height: 322px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 28px;
+    max-width: 90%;
+}
+
+/* Başlık: Vurgulu ve dinamik bir gölge efekti */
+.title {
+    font-family: var(--font-family);
+    font-weight: var(--fw-medium);
+    font-size: 70px;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+    color: var(--color-text-light);
+    /* İçten gelen ışıltı ve yumuşak, dışa vuran gölge */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.5), /* Parıltılı bir etki */
+        0 8px 15px rgba(0, 0, 0, 0.3); /* Derin ve yumuşak bir gölge */
+}
+
+/* Alt Başlık: Daha soft ve zarif bir gölge */
+.subtitle {
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 28px;
+    line-height: 107%;
+    letter-spacing: -0.02em;
+    color: var(--color-text-light);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* CTA Butonu: Dinamik hover ve animasyonlar eklendi */
+.ctaButton {
+    width: 200px;
+    height: 60px;
+    background: var(--bg-color);
+    color: var(--color-text-light);
+    border: none;
+    border-radius: 30px;
+    font-family: var(--font-family);
+    font-weight: var(--fw-bold);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(251, 251, 251, 0.4);
+    margin-top: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ctaIcon {
+    font-size: 20px;
+    transition: all 300ms ease;
+}
+
+.ctaButton:hover .ctaIcon {
+    transform: translateX(3px);
+}
+
+/* Butonun hover efekti: Parlayan bir gradient dolgusu */
+.ctaButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Soldan başlar */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent
+    );
+    transition: all 0.8s ease-in-out;
+    transform: skewX(-20deg); /* Açılı bir görünüm sağlar */
+    z-index: -1;
+}
+
+.ctaButton:hover::before {
+    left: 100%; /* Soldan sağa doğru kayar */
+}
+
+.ctaButton:hover {
+    color: var(--btn-hover-text);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background: var(--btn-hover-gradient); /* Tema değişkeni kullanıyor */
+}
+
+/* Responsive kısımlar: Orijinal kodun tümü korundu. */
+@media (max-width: 1439px) {
+    .textContent {
+        width: 480px;
+    }
+    .title {
+        font-size: 65px;
+    }
+    .subtitle {
+        font-size: 26px;
+    }
+    .ctaButton {
+        width: 190px;
+        height: 58px;
+        font-size: 15px;
+    }
+    .ctaIcon {
+        font-size: 18px;
+    }
+}
+
+/* ... Diğer tüm responsive kodlar aynı şekilde devam ediyor ... */
+@media (min-width: 1600px) {
+    .heroLeft {
+        padding-left: 6%;
+        justify-content: flex-start;
+        padding-right: 2%;
+    }
+    .textContent {
+        width: 540px;
+        min-height: 340px;
+    }
+    .ctaButton {
+        width: 210px;
+        height: 65px;
+        font-size: 17px;
+        gap: 10px;
+    }
+    .ctaIcon {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1900px) {
+    .heroLeft {
+        padding-left: 8%;
+        justify-content: flex-start;
+    }
+    .textContent {
+        width: 580px;
+        min-height: 380px;
+    }
+    .title {
+        font-size: 75px;
+    }
+    .subtitle {
+        font-size: 30px;
+    }
+    .ctaButton {
+        width: 240px;
+        height: 85px;
+        font-size: 18px;
+        gap: 12px;
+    }
+    .ctaIcon {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 2200px) {
+    .heroLeft {
+        padding-left: 10%;
+    }
+    .textContent {
+        width: 620px;
+        min-height: 420px;
+    }
+    .title {
+        font-size: 80px;
+    }
+    .subtitle {
+        font-size: 32px;
+    }
+    .ctaButton {
+        width: 260px;
+        height: 90px;
+        font-size: 20px;
+        gap: 14px;
+        border-radius: 45px;
+    }
+    .ctaIcon {
+        font-size: 26px;
+    }
+    .ctaButton::before {
+        border-radius: 45px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .heroLeft {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+    .textContent {
+        width: 100%;
+        max-width: 500px;
+    }
+    .title {
+        font-size: 55px;
+    }
+    .subtitle {
+        font-size: 24px;
+    }
+    .ctaButton {
+        width: 185px;
+        height: 56px;
+        font-size: 15px;
+        gap: 8px;
+    }
+    .ctaIcon {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroLeft {
+        padding: 20px;
+        height: 50%;
+    }
+    .textContent {
+        width: 100%;
+        height: auto;
+        gap: 20px;
+        text-align: center;
+    }
+    .title {
+        font-size: 45px;
+    }
+    .subtitle {
+        font-size: 20px;
+    }
+    .ctaButton {
+        width: 170px;
+        height: 52px;
+        font-size: 14px;
+        margin-top: 28px;
+        gap: 6px;
+        border-radius: 26px;
+    }
+    .ctaIcon {
+        font-size: 16px;
+    }
+    .ctaButton::before {
+        border-radius: 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .textContent {
+        gap: 16px;
+    }
+    .title {
+        font-size: 38px;
+    }
+    .subtitle {
+        font-size: 18px;
+    }
+    .ctaButton {
+        width: 150px;
+        height: 48px;
+        font-size: 13px;
+        margin-top: 24px;
+        gap: 5px;
+        border-radius: 24px;
+    }
+    .ctaIcon {
+        font-size: 14px;
+    }
+    .ctaButton::before {
+        border-radius: 24px;
+    }
+}
