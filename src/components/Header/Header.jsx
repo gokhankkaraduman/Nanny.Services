@@ -1,5 +1,6 @@
 import UserNav from "./UserNav/UserNav.jsx";
 import GuestNav from "./GuestNav/GuestNav.jsx";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher.jsx";
 import { NavLink } from "react-router-dom";
 import { RiUserHeartLine } from "react-icons/ri";
 import style from './Header.module.css';
@@ -29,6 +30,7 @@ export default function Header() {
         </div>
         <div className={style.navContainer}>
             {isLoggedIn ? <UserNav /> : <GuestNav />}
+            <ThemeSwitcher />
         </div>
     </header>
   );
