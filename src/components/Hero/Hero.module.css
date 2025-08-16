@@ -1,7 +1,19 @@
-.hero{
-    display:flex;
-    flex-direction: row;
+.hero {
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    padding:50px;
+    gap:40px;
+}
+.heroLeft, .heroRight {
+    flex: 1; /* eşit alan kaplasın */
+    display: flex;
+    align-items: center;
+}
+
+.heroLeft {
+    justify-content: center; /* textContent ortalanır */
+}
+
+.heroRight {
+    justify-content: flex-end; /* sağ içeriği sağa yasla */
 }
