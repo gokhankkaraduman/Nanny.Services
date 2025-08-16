@@ -1,180 +1,217 @@
-.nav{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-.list{
-    display:flex;
-    gap:40px;
-    align-items: center;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-left: 193px;
 
 }
-.listItem {
-    position: relative;
-    color: var(--color-text-light);
-    font-weight: var(--fw-regular);
-    font-size: 16px;
-    line-height: 125%;
-    letter-spacing: -0.01em;
-    
-    width: 120px;
-    min-height: 45px;
-    padding: 12px 20px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    transition: all 400ms ease;
-    z-index: 1;
+
+.list {
+  position: relative;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  background: var(--nav-bg-glass);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid var(--nav-border-glass);
+  padding: 10px;
+  box-shadow: var(--nav-shadow-premium);
+  transition: all 0.4s ease-in-out;
 }
 
-.listItem::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 0;
-    height: 100%;
+.list:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.listItem,
+.logoutBtn {
+  position: relative;
+  color: var(--color-text-light);
+  font-weight: var(--fw-medium);
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 16px;
+  transition: all 0.4s ease;
+  z-index: 1;
+  cursor: pointer;
+  min-width: 150px;
+  height: 55px;
+  overflow: hidden;
+}
+
+.logoutBtn {
+  border: 1px solid rgba(251, 251, 251, 0.2);
+  background-color: transparent;
+  border-radius: 30px;
+}
+
+.listItem.active {
+    box-shadow: var(--active-link-shadow);
     background: var(--link-hover-bg);
-    border-radius: 30px;
-    transition: width 400ms ease-in-out;
-    z-index: -1;
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.listItem::after {
-    content: "";
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    background: var(--link-hover-bg);
-    border-radius: 50%;
-    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    opacity: 0;
+.listItem::before,
+.logoutBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--link-hover-bg);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: -1;
+  border-radius: inherit;
 }
 
-/* Active durumu - hover ile aynı efekt */
-.active::before,
-.listItem:hover::before {
-    width: 100%;
+.listItem:hover::before,
+.listItem.active:not(.logoutBtn)::before,
+.logoutBtn:hover::before {
+  transform: scaleY(1);
 }
 
-.active::after,
-.listItem:hover::after {
-    width: 12px;
-    height: 12px;
-    opacity: 1;
+.listItem::after,
+.logoutBtn::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 15px);
+  left: 50%;
+  transform: translate(-50%, 0) scale(0);
+  width: 10px;
+  height: 10px;
+  background: var(--active-drop-color);
+  border-radius: 50%;
+  box-shadow: var(--drop-shadow);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 3;
+  opacity: 0;
 }
 
-.active,
-.listItem:hover {
-    color: var(--link-hover-text);
-    transform: scale(1.1);
-    z-index: 10;
+.listItem:hover:not(.active)::after,
+.logoutBtn:hover:not(.active)::after {
+  transform: translate(-50%, 0) scale(1.8);
+  opacity: 1;
+  animation: dropEffect 0.6s ease-out;
 }
 
-/* Active olan damla animasyonu kalmasın, direkt göster */
-.active::after {
-    animation: none; /* Active'de animasyon yok */
+.listItem.active::after {
+  transform: translate(-50%, 0) scale(1.8);
+  opacity: 1;
+  animation: none;
 }
 
-/* Sadece hover'da animasyon */
-.listItem:hover:not(.active)::after {
-    animation: dropEffect 600ms ease-out;
+.listItem:hover,
+.listItem.active,
+.logoutBtn:hover {
+  color: var(--link-hover-text);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.listItem:not(:hover) {
-    transition: all 300ms ease;
+.linkIcon,
+.logoutIcon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
 }
 
-ul:hover .listItem:not(:hover):not(.active) {
-    transform: scale(0.85);
-    opacity: 0.6;
-    filter: blur(1px);
+.listItem:hover .linkIcon,
+.listItem.active .linkIcon,
+.logoutBtn:hover .logoutIcon {
+  transform: translateY(-2px);
 }
 
 @keyframes dropEffect {
-    0% {
-        bottom: 50%;
-        width: 4px;
-        height: 4px;
-        opacity: 0.8;
-    }
-    50% {
-        bottom: -5px;
-        width: 8px;
-        height: 10px;
-        opacity: 1;
-    }
-    100% {
-        bottom: -15px;
-        width: 12px;
-        height: 12px;
-        opacity: 1;
-    }
-}
-.userList{
-    display:flex;
-    align-items: center;
-    gap:24px;
-}
-.userListItem{
-    font-size: 18px;
-    font-weight: var(--fw-medium);
-    color:var(--color-text-light);
-    line-height: 111%;
-    letter-spacing: -0.01em;
-    display:flex;
-    align-items: center;
-    justify-content: center;
+  0% {
+    transform: translate(-50%, -200%) scale(0.1);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, 50%) scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 0) scale(1.8);
+    opacity: 1;
+  }
 }
 
-.userName{
-    display:flex;
-    align-items: center;
-    gap:14px;
+.userInfo {
+  display: flex;
+  align-items: center;
 }
-.icon{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    background-color:var(--color-text-light);
-    color:var(--bg-color);
-    width: 40px;
-    height: 40px;
-    border-radius:10px;
+
+.userList {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
 }
-.logoutBtn{
-    position: relative;
-    font-size:16px;
-    border: 1px solid rgba(251, 251, 251, 0.4);
-    border-radius: 30px;
-    padding: 14px 39px;
-    width: 134px;
-    height: 48px;
-    color: var(--color-text-light);
-    background-color: transparent;
-    transition: all 200ms ease-in-out;
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-radius: 16px;
+  background: var(--nav-bg-glass);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--nav-border-glass);
+  box-shadow: var(--nav-shadow-premium);
+  transition: all 0.4s ease;
+  cursor: pointer;
 }
-.logoutBtn::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0; 
-    width: 0; 
-    height: 100%;
-    background: var(--btn-hover-bg);
-    border-radius: 30px; 
-    transition: width 300ms ease-in-out;
-    z-index: -1; 
+
+.userProfile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
-.logoutBtn:hover::before {
-    width: 100%;
+
+.userAvatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--link-hover-bg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
-.logoutBtn:hover{
-    color: var(--btn-hover-text);
+
+.userProfile:hover .userAvatar {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.avatarIcon {
+  color: white;
+  font-size: 22px;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.userGreeting {
+  font-size: 14px;
+  color: var(--color-text-light);
+  opacity: 0.7;
+}
+
+.userName {
+  font-size: 16px;
+  color: var(--color-text-light);
+  font-weight: var(--fw-semibold);
 }
