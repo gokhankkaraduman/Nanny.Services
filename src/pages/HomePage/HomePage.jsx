@@ -7,6 +7,7 @@ export default function HomePage() {
     <div className={style.container}>
       <Header />
       <Hero />
+      <div className={style.heroImg}></div>
     </div>
   )
 }
