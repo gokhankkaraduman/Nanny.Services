@@ -1,10 +1,10 @@
+
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 20px;
-    margin-left: 205px;
+    margin-left: 193px;
 }
 
 .list {
@@ -12,225 +12,189 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    gap: 92px;
+    gap: 150px;
 }
 
-.left {
+.left,
+.right {
     display: flex;
-    gap: 40px;
+    align-items: center;
+    gap:50px;
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px) saturate(130%);
+    border-radius: 20px;
+    padding: 16px 32px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.left:hover,
+.right:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 
 .right {
-    display: flex;
-    gap: 40px;
-    position: relative;
+    gap: 20px;
 }
 
-/* SOL TARAF STİLLERİ - LEFT */
-.left > .listItem {
+/* Tüm linkler ve butonlar için genel stiller */
+.listItem {
     position: relative;
-    color: var(--color-text-light);
-    font-weight: var(--fw-regular);
-    font-size: 16px;
-    line-height: 125%;
-    letter-spacing: -0.01em;
-    width: 100px;
-    min-height: 45px;
-    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    border-radius: 8px;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: var(--fw-medium);
+    color: var(--color-text-light);
+    text-decoration: none;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    padding: 16px 20px;
+    border-radius: 12px;
     transition: all 400ms ease;
     z-index: 1;
-    text-decoration: none;
+    overflow: hidden;
+    width: 130px; /* Tüm butonlar aynı boyutta */
+    min-height: 55px; /* Tüm butonlar aynı boyutta */
+    text-align: center;
 }
 
-.left > .listItem::before {
+/* Hover ve Active için ortak ::before efekti */
+.listItem::before {
     content: "";
     position: absolute;
     top: 0;
-    right: 0;
-    width: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
     background: var(--link-hover-bg);
-    border-radius: 30px;
-    transition: width 400ms ease-in-out;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: -1;
+    border-radius: inherit;
 }
 
-.left > .listItem::after {
-    content: "";
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    background: var(--link-hover-bg);
-    border-radius: 50%;
-    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    opacity: 0;
+.listItem:hover::before,
+.listItem.active::before {
+    transform: scaleY(1);
 }
 
-/* Sol taraf active/hover durumları */
-.left > .active::before,
-.left > .listItem:hover::before {
-    width: 100%;
-}
-
-.left > .active::after,
-.left > .listItem:hover::after {
-    width: 12px;
-    height: 12px;
-    opacity: 1;
-}
-
-.left > .active,
-.left > .listItem:hover {
+/* Hover ve Active durumunda text rengi ve dönüşüm */
+.listItem:hover,
+.listItem.active {
     color: var(--link-hover-text);
-    transform: scale(1.1);
-    z-index: 10;
-}
-
-/* Active olan damla animasyonu kalmasın, direkt göster */
-.left > .active::after {
-    animation: none;
-}
-
-/* Sadece hover'da animasyon */
-.left > .listItem:hover:not(.active)::after {
-    animation: dropEffect 600ms ease-out;
-}
-
-.left > .listItem:not(:hover) {
-    transition: all 300ms ease;
-}
-
-.left:hover .listItem:not(:hover):not(.active) {
-    transform: scale(0.85);
-    opacity: 0.6;
-    filter: blur(1px);
-}
-
-@keyframes dropEffect {
-    0% {
-        bottom: 50%;
-        width: 4px;
-        height: 4px;
-        opacity: 0.8;
-    }
-    50% {
-        bottom: -5px;
-        width: 8px;
-        height: 10px;
-        opacity: 1;
-    }
-    100% {
-        bottom: -15px;
-        width: 12px;
-        height: 12px;
-        opacity: 1;
-    }
-}
-
-/* SAĞ TARAF STİLLERİ - RIGHT */
-.right > .listItem {
-    position: relative;
-    font-size: 16px;
-    border: 1px solid rgba(251, 251, 251, 0.4);
-    border-radius: 30px;
-    padding: 0;
-    width: 134px;
-    height: 48px;
-    color: var(--color-text-light);
-    background-color: transparent;
-    transition: all 300ms ease-in-out;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    text-decoration: none;
-    text-align: center;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Icon stilleri */
 .icon {
-    font-size: 18px;
-    transition: all 300ms ease;
-}
-
-/* Sol taraf iconları */
-.left .icon {
     font-size: 20px;
+    transition: transform 0.3s ease;
 }
 
-/* Sağ taraf iconları */
-.right .icon {
-    font-size: 16px;
-}
-
-/* Hareket eden background için ana container */
-.right::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0; /* Varsayılan olarak sağdaki butonda (register) */
-    width: 134px;
-    height: 48px;
-    background: var(--btn-hover-bg);
-    border-radius: 30px;
-    transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Login hover/active olduğunda background sola kayar */
-.right > .listItem:first-child:hover ~ *,
-.right > .listItem:first-child.active ~ * {
-    /* Bu boş kalabilir, asıl işlem aşağıda */
-}
-
-.right > .listItem:first-child:hover,
-.right > .listItem:first-child.active {
-    color: var(--btn-hover-text);
-}
-
-.right > .listItem:last-child:hover,
-.right > .listItem:last-child.active {
-    color: var(--btn-hover-text);
-}
-
-/* Background pozisyon kontrolü */
-.right:has(.listItem:first-child:hover)::before,
-.right:has(.listItem:first-child.active)::before {
-    right: calc(100% - 134px); /* Sola kayar (login) */
-}
-
-.right:has(.listItem:last-child:hover)::before,
-.right:has(.listItem:last-child.active)::before {
-    right: 0; /* Sağda kalır (register) */
-}
-
-/* Eğer :has desteklenmiyorsa JavaScript ile de yapabiliriz */
-/* Alternatif: class-based yaklaşım */
-.right.login-active::before {
-    right: calc(100% - 134px);
-}
-
-.right.register-active::before {
-    right: 0;
-}
-
-/* Hover efektleri */
-.right > .listItem:hover {
+.listItem:hover .icon,
+.active .icon {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Active buton stili */
-.right > .listItem.active {
-    color: var(--btn-hover-text);
+/*
+    Responsive Design
+    Tasarımın tüm cihazlara uyum sağlaması için Media Query'ler
+*/
+@media (max-width: 1439px) {
+    .nav {
+        margin-left: 150px;
+    }
+    .list {
+        gap: 80px;
+    }
+    .left,
+    .right {
+        gap: 30px;
+        padding: 12px 24px;
+    }
+    .listItem {
+        font-size: 16px;
+        width: 110px;
+        min-height: 50px;
+    }
+    .right {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .nav {
+        margin-left: 100px;
+        padding: 0 10px;
+    }
+    .list {
+        gap: 40px;
+    }
+    .left,
+    .right {
+        gap: 20px;
+        padding: 10px 20px;
+    }
+    .listItem {
+        font-size: 15px;
+        width: 100px;
+        min-height: 45px;
+    }
+    .right {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        margin-left: 0;
+        justify-content: center;
+    }
+    .list {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .left,
+    .right {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+    }
+    .listItem {
+        width: 100%;
+        max-width: 140px;
+        min-height: 40px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav {
+        padding: 0 5px;
+    }
+    .list {
+        gap: 10px;
+    }
+    .left,
+    .right {
+        gap: 5px;
+        padding: 5px 10px;
+    }
+    .listItem {
+        width: 100%;
+        min-height: 35px;
+        font-size: 13px;
+        padding: 8px;
+    }
+    .icon {
+        font-size: 16px;
+    }
 }
