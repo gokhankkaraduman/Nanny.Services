@@ -6,8 +6,8 @@ import style from './Hero.module.css';
 export default function Hero() {
     return (
         <section className={style.hero}>
-            <HeroLeft />
-            <HeroRight />
+            <HeroLeft className={style.heroLeft} />
+            <HeroRight className={style.heroRight} />
         </section>
     )
 }
