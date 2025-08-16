@@ -1,4 +1,68 @@
-.container{
+.container {
+    height: 90vh;
     background-color: var(--bg-color);
     border-radius: 30px;
+    margin: 32px;
+    z-index: 1;
+    position: relative;
+}
+
+.heroImg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 48.5%; /* 699/1440 = %48.5 - Figma baseline */
+    background-image: url("../../assets/img/hero-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+/* Küçük ekranlar için */
+@media (max-width: 1439px) {
+    .heroImg {
+        width: 45%; /* Küçük ekranlarda daha küçük */
+    }
+}
+
+/* Orta boy ekranlar için - senin ekranın */
+@media (min-width: 1600px) {
+    .heroImg {
+        width: 50%; /* Tam yarı yarıya bölünme başlasın */
+    }
+}
+
+/* Büyük ekranlar için (1900px+) - tam ortadan ikiye böl */
+@media (min-width: 1900px) {
+    .heroImg {
+        width: 53%; /* Biraz daha büyük, daha dominant */
+    }
+}
+
+/* Çok büyük ekranlar için (2200px+) */
+@media (min-width: 2200px) {
+    .heroImg {
+        width: 57%; /* Ultra geniş ekranlarda resim daha büyük */
+    }
+}
+
+/* Mobil ve küçük tabletler için */
+@media (max-width: 768px) {
+    .container {
+        margin: 16px;
+        border-radius: 20px;
+    }
+    
+    .heroImg {
+        width: 100%; /* Mobilde tam genişlik */
+        height: 50%; /* Yükseklik sınırı */
+        top: auto;
+        bottom: 0;
+        border-radius: 0 0 20px 20px;
+        border-top-right-radius: 0;
+    }
 }
