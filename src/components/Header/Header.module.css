@@ -14,6 +14,7 @@
     align-items: center;
     justify-content: center;
     height: 100px;
+    margin-right:243px
 }
 
 .logo {
@@ -44,9 +45,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #00c6ff, #0072ff, #00f5d4); /* Turkuaz-mavi-yeşil geçiş */
+    background: var(--logo-bg-gradient); /* Tema değişkeni kullanıyor */
     border-radius: 16px;
-    box-shadow: 0 8px 28px rgba(0, 198, 255, 0.5),
+    box-shadow: var(--logo-box-shadow),
                 inset 0 1px 0 rgba(255,255,255,0.1);
     transition: all 400ms ease;
     overflow: hidden;
@@ -55,9 +56,9 @@
 
 .mainIcon {
     font-size: 26px;
-    color: #e9ffff;
+    color: var(--logo-icon-color); /* Tema değişkeni kullanıyor */
     transition: all 300ms ease;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Filter yerine text-shadow */
     z-index: 2;
 }
 
@@ -81,7 +82,7 @@
     bottom: -4px;
     border: 2px solid transparent;
     border-radius: 20px;
-    background: linear-gradient(135deg, rgba(0,198,255,0.4), rgba(0,245,212,0.4));
+    background: var(--logo-ring-gradient); /* Tema değişkeni kullanıyor */
     background-clip: padding-box;
     opacity: 0;
     transform: scale(0.8);
@@ -91,8 +92,8 @@
 /* ICON hover daha parlak */
 .logo:hover .iconContainer {
     transform: scale(1.1) rotate(2deg);
-    background: linear-gradient(135deg, #00f5d4, #00c6ff, #0072ff);
-    box-shadow: 0 12px 48px rgba(0, 198, 255, 0.6),
+    background: var(--logo-hover-gradient); /* Tema değişkeni kullanıyor */
+    box-shadow: var(--logo-hover-box-shadow),
                 inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
@@ -126,9 +127,8 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 700;
     font-size: 26px;
-    color: #ffffff;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.3),
-                 0 0 8px rgba(0,198,255,0.4); /* Mavi-turkuaz parıltı */
+    color: var(--logo-text-color); /* Tema değişkeni kullanıyor */
+    text-shadow: var(--logo-text-shadow); /* Tema değişkeni kullanıyor */
     transition: transform 400ms ease, text-shadow 400ms ease;
 }
 
@@ -137,7 +137,7 @@
 }
 
 .services {
-    color: #80f0ff;
+    color: var(--logo-services-color); /* Tema değişkeni kullanıyor */
     font-weight: 400;
     transition: color 400ms ease;
 }
@@ -153,7 +153,7 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 12px;
     font-weight: 500;
-    color: #b3f8ff;
+    color: var(--logo-tagline-color); /* Tema değişkeni kullanıyor */
     letter-spacing: 0.5px;
     text-transform: uppercase;
     position: absolute;
@@ -185,4 +185,6 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
