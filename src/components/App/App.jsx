@@ -1,36 +1,27 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import HomePage from '../../pages/HomePage/HomePage.jsx';
 import LoginPage from '../../pages/LoginPage/LoginPage.jsx';
 import RegisterPage from '../../pages/RegisterPage/RegisterPage.jsx';
 import { ThemeProvider } from '../../context/ThemeContext.jsx';
-import Header from '../Header/Header.jsx';
-
 
 function App() {
+  const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || 'YOUR_GOOGLE_CLIENT_ID_HERE';
+
   return (
-    <ThemeProvider>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={
-            <>
-              <HomePage />
-            </>
-          } />
-          <Route path="/login" element={
-            <>
-              <LoginPage />
-            </>
-          } />
-          <Route path="/register" element={
-            <>
-              <RegisterPage />
-            </>
-          } />
-        </Routes>
-      </div>
-    </ThemeProvider>
-  )
+    <GoogleOAuthProvider clientId={googleClientId}>
+      <ThemeProvider>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Routes>
+        </div>
+      </ThemeProvider>
+    </GoogleOAuthProvider>
+  );
 }
 
 export default App;
