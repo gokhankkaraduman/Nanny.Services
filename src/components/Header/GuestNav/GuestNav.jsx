@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import { FaUserNurse } from "react-icons/fa";
-import { RiLoginBoxLine } from "react-icons/ri";
-import { HiOutlineUserAdd } from "react-icons/hi";
+import { RiLoginBoxLine, RiUserAddLine } from "react-icons/ri";
 import style from "./GuestNav.module.css";
 
 export default function GuestNav() {
@@ -37,8 +36,8 @@ export default function GuestNav() {
                         to="/register" 
                         className={({ isActive }) => isActive ? `${style.listItem} ${style.active}` : style.listItem}
                     >
-                        <HiOutlineUserAdd className={style.icon} />
-                        Registration
+                        <RiUserAddLine className={style.icon} />
+                        Register
                     </NavLink>
                 </div>
             </ul>
