@@ -4,6 +4,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import HomePage from '../../pages/HomePage/HomePage.jsx';
 import LoginPage from '../../pages/LoginPage/LoginPage.jsx';
 import RegisterPage from '../../pages/RegisterPage/RegisterPage.jsx';
+import NanniesPage from '../../pages/NanniesPage/NanniesPage.jsx';
 import { ThemeProvider } from '../../context/ThemeContext.jsx';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/nannies" element={<NanniesPage />} />
           </Routes>
         </div>
       </ThemeProvider>

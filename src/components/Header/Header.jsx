@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { RiUserHeartLine } from "react-icons/ri";
 import style from './Header.module.css';
 
-const isLoggedIn = false;
+const isLoggedIn = true;
 
 export default function Header() {
   return (
